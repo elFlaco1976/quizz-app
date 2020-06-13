@@ -1,0 +1,26 @@
+.container-score-bar-centered {
+  display: flex;
+  justify-content: center;
+
+  .container-score-bar {
+    position: absolute;
+    width: 72%;
+    bottom: 30px;
+
+    .score-bar-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .score-bar-graphs {
+      position: relative;
+      height: 20px;
+      width: 100%;
+      position: absolute;
+      border: 2px solid black;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+  }
+}
