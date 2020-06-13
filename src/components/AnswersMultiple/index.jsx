@@ -41,10 +41,7 @@ const AnswersMultiple = ({
   handleAnswerButton,
   answerSelected,
 }) => {
-  const answers = [
-    questionData.correctAnswer,
-    ...questionData.incorrectAnswers,
-  ];
+  let answers = questionData.allAnswers;
   return (
     <div className="answers-container container-padded">
       {answers.map((a) => {

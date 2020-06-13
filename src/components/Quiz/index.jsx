@@ -6,6 +6,7 @@ import {
   RESULT_INCORRECT,
   RESULT_CORRECT,
 } from '../../utils/results';
+import shuffle from 'lodash.shuffle';
 import './styles.scss';
 
 class Quiz extends React.Component {
@@ -55,15 +56,17 @@ class Quiz extends React.Component {
 
   componentDidMount() {
     const questions = questionsData.map((question) => {
+      const correctAnswer = decodeURIComponent(question.correct_answer);
+      const incorrectAnswers = question.incorrect_answers.map((a) =>
+        decodeURIComponent(a)
+      );
       return {
         category: question.category,
-        correctAnswer: decodeURIComponent(question.correct_answer),
-        incorrectAnswers: question.incorrect_answers.map((a) =>
-          decodeURIComponent(a)
-        ),
+        correctAnswer,
         questionText: decodeURIComponent(question.question),
         questionType: question.type,
         difficulty: question.difficulty,
+        allAnswers: shuffle([correctAnswer, ...incorrectAnswers]),
       };
     });
     this.gameType = 'Entertainment: Board Games';

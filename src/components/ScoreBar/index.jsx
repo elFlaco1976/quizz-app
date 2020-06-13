@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  RESULT_NONE,
-  RESULT_INCORRECT,
-  RESULT_CORRECT,
-} from '../../utils/results';
+import { RESULT_NONE } from '../../utils/results';
 import './styles.scss';
 
 const ScoreBar = ({
@@ -55,7 +51,6 @@ const ScoreBar = ({
           <span>{`Max Score: ${maxPossibleScore}%`}</span>
         </div>
         <div className="score-bar-graphs">
-          {/*          <div className="graph-frame"></div> */}
           <div style={lowestScoreBarStyle}></div>
           <div style={scoreBarStyle}></div>
           <div style={maxPossibleScoreBarStyle}></div>
