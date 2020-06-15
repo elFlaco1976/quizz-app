@@ -1,10 +1,10 @@
-import React from 'react';
-import OverallBar from '../OverallBar';
-import QuestionInformation from '../QuestionInformation';
-import AnswersMultiple from '../AnswersMultiple';
-import QuestionStatus from '../QuestionStatus';
-import ScoreBar from '../ScoreBar';
-import './styles.scss';
+import React from 'react'
+import OverallBar from '../OverallBar'
+import QuestionInformation from '../QuestionInformation'
+import AnswersMultiple from '../AnswersMultiple'
+import QuestionStatus from '../QuestionStatus'
+import ScoreBar from '../ScoreBar'
+import './styles.scss'
 
 const Question = ({
   questionData,
@@ -16,10 +16,10 @@ const Question = ({
   correctAnswers,
   answerSelected,
   gameType,
-  isGameFinished,
+  isGameFinished
 }) => {
   return (
-    <div className="container-question">
+    <div className='container-question'>
       <OverallBar
         totalQuestions={totalQuestions}
         currentQuestionIndex={currentQuestionIndex}
@@ -48,7 +48,7 @@ const Question = ({
         currentResult={currentResult}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Question;
+export default Question

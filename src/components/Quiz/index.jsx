@@ -1,25 +1,25 @@
-import React from 'react';
-import questionsData from '../../data/questions.json';
-import Question from '../Question';
+import React from 'react'
+import questionsData from '../../data/questions.json'
+import Question from '../Question'
 import {
   RESULT_NONE,
   RESULT_INCORRECT,
-  RESULT_CORRECT,
-} from '../../utils/results';
-import shuffle from 'lodash.shuffle';
-import './styles.scss';
+  RESULT_CORRECT
+} from '../../utils/results'
+import shuffle from 'lodash.shuffle'
+import './styles.scss'
 
 class Quiz extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       questions: [],
       currentQuestionIndex: 0,
       correctAnswers: 0,
       currentResult: RESULT_NONE,
       answerSelected: null,
-      isGameFinished: false,
-    };
+      isGameFinished: false
+    }
   }
 
   handleNextButton = () => {
@@ -27,19 +27,19 @@ class Quiz extends React.Component {
       return {
         currentQuestionIndex: prevState.currentQuestionIndex + 1,
         currentResult: RESULT_NONE,
-        answerSelected: null,
-      };
-    });
+        answerSelected: null
+      }
+    })
   };
 
   handleAnswerButton = (answer) => {
-    const { questions, currentQuestionIndex, currentResult } = this.state;
-    const currentQuestion = questions[currentQuestionIndex];
-    const answerIsCorrect = answer === currentQuestion.correctAnswer;
+    const { questions, currentQuestionIndex, currentResult } = this.state
+    const currentQuestion = questions[currentQuestionIndex]
+    const answerIsCorrect = answer === currentQuestion.correctAnswer
     if (currentResult !== RESULT_NONE) {
-      return;
+      return
     }
-    const isGameFinished = currentQuestionIndex + 1 === questions.length;
+    const isGameFinished = currentQuestionIndex + 1 === questions.length
 
     this.setState((prevState) => {
       return {
@@ -49,42 +49,42 @@ class Quiz extends React.Component {
         correctAnswers: answerIsCorrect
           ? prevState.correctAnswers + 1
           : prevState.correctAnswers,
-        isGameFinished,
-      };
-    });
+        isGameFinished
+      }
+    })
   };
 
-  componentDidMount() {
+  componentDidMount () {
     const questions = questionsData.map((question) => {
-      const correctAnswer = decodeURIComponent(question.correct_answer);
+      const correctAnswer = decodeURIComponent(question.correct_answer)
       const incorrectAnswers = question.incorrect_answers.map((a) =>
         decodeURIComponent(a)
-      );
+      )
       return {
         category: question.category,
         correctAnswer,
         questionText: decodeURIComponent(question.question),
         questionType: question.type,
         difficulty: question.difficulty,
-        allAnswers: shuffle([correctAnswer, ...incorrectAnswers]),
-      };
-    });
-    this.gameType = 'Entertainment: Board Games';
-    this.setState({ questions });
+        allAnswers: shuffle([correctAnswer, ...incorrectAnswers])
+      }
+    })
+    this.gameType = 'Entertainment: Board Games'
+    this.setState({ questions })
   }
 
-  render() {
+  render () {
     const {
       questions,
       currentQuestionIndex,
       currentResult,
       correctAnswers,
       answerSelected,
-      isGameFinished,
-    } = this.state;
+      isGameFinished
+    } = this.state
 
     return (
-      <div className="quiz-container">
+      <div className='quiz-container'>
         {questions.length > 0 && (
           <Question
             questionData={questions[currentQuestionIndex]}
@@ -100,8 +100,8 @@ class Quiz extends React.Component {
           />
         )}
       </div>
-    );
+    )
   }
 }
 
-export default Quiz;
+export default Quiz
