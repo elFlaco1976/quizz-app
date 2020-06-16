@@ -15,7 +15,6 @@ const Question = ({
   currentResult,
   correctAnswers,
   answerSelected,
-  gameType,
   isGameFinished
 }) => {
   return (
@@ -28,7 +27,6 @@ const Question = ({
         questionData={questionData}
         totalQuestions={totalQuestions}
         currentQuestionIndex={currentQuestionIndex}
-        gameType={gameType}
       />
       <AnswersMultiple
         questionData={questionData}

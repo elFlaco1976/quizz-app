@@ -7,15 +7,6 @@ import {
 } from '../../utils/results'
 import './styles.scss'
 
-const getResultText = (result) => {
-  if (result === RESULT_INCORRECT) {
-    return 'Sorry!'
-  } else if (result === RESULT_CORRECT) {
-    return 'Correct!'
-  }
-  return ''
-}
-
 const QuestionStatus = ({
   handleNextButton,
   currentResult,
@@ -34,6 +25,15 @@ const QuestionStatus = ({
       )}
     </div>
   )
+}
+
+const getResultText = (result) => {
+  if (result === RESULT_INCORRECT) {
+    return 'Sorry!'
+  } else if (result === RESULT_CORRECT) {
+    return 'Correct!'
+  }
+  return ''
 }
 
 export default QuestionStatus

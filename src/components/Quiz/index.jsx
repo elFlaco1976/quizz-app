@@ -1,4 +1,5 @@
 import React from 'react'
+import shuffle from 'lodash.shuffle'
 import questionsData from '../../data/questions.json'
 import Question from '../Question'
 import {
@@ -6,7 +7,6 @@ import {
   RESULT_INCORRECT,
   RESULT_CORRECT
 } from '../../utils/results'
-import shuffle from 'lodash.shuffle'
 import './styles.scss'
 
 class Quiz extends React.Component {
@@ -43,7 +43,6 @@ class Quiz extends React.Component {
 
     this.setState((prevState) => {
       return {
-        ...prevState,
         currentResult: answerIsCorrect ? RESULT_CORRECT : RESULT_INCORRECT,
         answerSelected: answer,
         correctAnswers: answerIsCorrect
@@ -61,7 +60,7 @@ class Quiz extends React.Component {
         decodeURIComponent(a)
       )
       return {
-        category: question.category,
+        category: decodeURIComponent(question.category),
         correctAnswer,
         questionText: decodeURIComponent(question.question),
         questionType: question.type,
@@ -69,7 +68,6 @@ class Quiz extends React.Component {
         allAnswers: shuffle([correctAnswer, ...incorrectAnswers])
       }
     })
-    this.gameType = 'Entertainment: Board Games'
     this.setState({ questions })
   }
 
@@ -95,7 +93,6 @@ class Quiz extends React.Component {
             currentResult={currentResult}
             correctAnswers={correctAnswers}
             answerSelected={answerSelected}
-            gameType={this.gameType}
             isGameFinished={isGameFinished}
           />
         )}
