@@ -9,7 +9,7 @@ import {
 } from '../../utils/results'
 import './styles.scss'
 
-class Quiz extends React.Component {
+export default class Quiz extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -100,5 +100,3 @@ class Quiz extends React.Component {
     )
   }
 }
-
-export default Quiz

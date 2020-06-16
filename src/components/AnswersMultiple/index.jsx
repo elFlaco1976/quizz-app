@@ -3,12 +3,12 @@ import { Button } from 'reactstrap'
 import { RESULT_NONE, RESULT_INCORRECT } from '../../utils/results'
 import './styles.scss'
 
-const AnswersMultiple = ({
+export default function AnswersMultiple ({
   questionData,
   currentResult,
   handleAnswerButton,
   answerSelected
-}) => {
+}) {
   let answers = questionData.allAnswers
   return (
     <div className='answers-container container-padded'>
@@ -67,5 +67,3 @@ const getButtonStyleFromResult = (
   }
   return styleButtonIncorrectAnswer
 }
-
-export default AnswersMultiple

@@ -6,7 +6,7 @@ import QuestionStatus from '../QuestionStatus'
 import ScoreBar from '../ScoreBar'
 import './styles.scss'
 
-const Question = ({
+export default function Question ({
   questionData,
   handleNextButton,
   handleAnswerButton,
@@ -16,7 +16,7 @@ const Question = ({
   correctAnswers,
   answerSelected,
   isGameFinished
-}) => {
+}) {
   return (
     <div className='container-question'>
       <OverallBar
@@ -48,5 +48,3 @@ const Question = ({
     </div>
   )
 }
-
-export default Question

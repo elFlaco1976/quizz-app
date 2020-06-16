@@ -7,11 +7,11 @@ import {
 } from '../../utils/results'
 import './styles.scss'
 
-const QuestionStatus = ({
+export default function QuestionStatus ({
   handleNextButton,
   currentResult,
   isGameFinished
-}) => {
+}) {
   return (
     <div className='container-question-status container-padded'>
       <p className='result-text'>{getResultText(currentResult)}</p>
@@ -35,5 +35,3 @@ const getResultText = (result) => {
   }
   return ''
 }
-
-export default QuestionStatus
